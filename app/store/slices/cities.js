@@ -6,14 +6,15 @@ export const addCity = createAsyncThunk(
   "city/fetchCityWeather",
   async (cityName) => {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`
     );
     const data = await response.json();
+    console.log(data);
     return {
-      name: cityName,
-      temp: data.main.temp,
-      pressure: data.main.pressure,
-      humidity: data.main.humidity,
+      name: data.city.name,
+      temp: data.list.map((threeHour) => threeHour.main.temp),
+      pressure: data.list.map((threeHour) => threeHour.main.pressure),
+      humidity: data.list.map((threeHour) => threeHour.main.humidity),
     };
   }
 );

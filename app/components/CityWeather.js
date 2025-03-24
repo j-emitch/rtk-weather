@@ -9,15 +9,15 @@ const CityWeather = ({ city }) => {
         <div className="row">
           <div className="col-md-4">
             <h5>Temperature</h5>
-            <Sparklines data={[city.temp]}>
+            <Sparklines data={city.temp}>
               <SparklinesLine color="orange" />
               <SparklinesSpots />
             </Sparklines>
-            <p>{city.temp} °C</p>
+            <p>{city.temp} &deg;F</p>
           </div>
           <div className="col-md-4">
             <h5>Pressure</h5>
-            <Sparklines data={[city.pressure]}>
+            <Sparklines data={city.pressure}>
               <SparklinesLine color="green" />
               <SparklinesSpots />
             </Sparklines>
@@ -25,7 +25,7 @@ const CityWeather = ({ city }) => {
           </div>
           <div className="col-md-4">
             <h5>Humidity</h5>
-            <Sparklines data={[city.humidity]}>
+            <Sparklines data={city.humidity}>
               <SparklinesLine color="gray" />
               <SparklinesSpots />
             </Sparklines>
