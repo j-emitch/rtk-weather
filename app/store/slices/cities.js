@@ -10,11 +10,30 @@ export const addCity = createAsyncThunk(
     );
     const data = await response.json();
     console.log(data);
+    
+    const avgTemp = data.list.reduce(
+      (acc, threeHour) => acc + threeHour.main.temp,
+      0
+    ) / data.list.length;
+        
+    const avgHumidity =
+      data.list.reduce((acc, threeHour) => acc + threeHour.main.humidity, 0) /
+      data.list.length;
+          
+    const avgPressure =
+      data.list.reduce(
+        (acc, threeHour) => acc + threeHour.main.pressure,
+        0
+      ) / data.list.length;
+
     return {
       name: data.city.name,
       temp: data.list.map((threeHour) => threeHour.main.temp),
       pressure: data.list.map((threeHour) => threeHour.main.pressure),
       humidity: data.list.map((threeHour) => threeHour.main.humidity),
+      avgTemp: avgTemp,
+      avgHumidity: avgHumidity,
+      avgPressure: avgPressure,
     };
   }
 );
