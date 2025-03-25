@@ -1,39 +1,34 @@
-import { Sparklines, SparklinesLine, SparklinesSpots } from "react-sparklines";
+import { Sparklines, SparklinesLine, SparklinesReferenceLine } from "react-sparklines";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const CityWeather = ({ city }) => {
   return (
-    <div className="card mb-4">
-      <div className="card-body">
-        <h2 className="card-title">{city.name}</h2>
-        <div className="row">
-          <div className="col-md-4">
-            <h5>Temperature</h5>
-            <Sparklines data={city.temp}>
-              <SparklinesLine color="orange" />
-              <SparklinesSpots />
-            </Sparklines>
-            <p>{city.avgTemp} &deg;F</p>
-          </div>
-          <div className="col-md-4">
-            <h5>Pressure</h5>
-            <Sparklines data={city.pressure}>
-              <SparklinesLine color="green" />
-              <SparklinesSpots />
-            </Sparklines>
-            <p>{city.avgPressure} hPa</p>
-          </div>
-          <div className="col-md-4">
-            <h5>Humidity</h5>
-            <Sparklines data={city.humidity}>
-              <SparklinesLine color="gray" />
-              <SparklinesSpots />
-            </Sparklines>
-            <p>{city.avgHumidity} %</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <tr>
+        <td>
+          <h5>{city.name}</h5>
+        </td>
+        <td>
+          <Sparklines data={city.temp}>
+            <SparklinesLine color="orange" />
+            <SparklinesReferenceLine type="mean" />
+          </Sparklines>
+          <p>{city.avgTemp} &deg;F</p>
+        </td>
+        <td>
+          <Sparklines data={city.pressure}>
+            <SparklinesLine color="green" />
+            <SparklinesReferenceLine type="mean" />
+          </Sparklines>
+          <p>{city.avgPressure} hPa</p>
+        </td>
+        <td>
+          <Sparklines data={city.humidity}>
+            <SparklinesLine color="gray" />
+            <SparklinesReferenceLine type="mean" />
+          </Sparklines>
+          <p>{city.avgHumidity} %</p>
+        </td>
+      </tr>
   );
 };
 
