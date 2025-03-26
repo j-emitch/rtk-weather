@@ -56,7 +56,6 @@ const citySlice = createSlice({
       })
       .addCase(addCity.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        console.log(action.payload);
         state.cities.push(action.payload);
       })
       .addCase(addCity.rejected, (state, action) => {
