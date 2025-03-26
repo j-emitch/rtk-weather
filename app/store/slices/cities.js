@@ -9,7 +9,6 @@ export const addCity = createAsyncThunk(
       `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`
     );
     const data = await response.json();
-    console.log(data);
     
     const avgTemp =
       Math.round(data.list.reduce(
